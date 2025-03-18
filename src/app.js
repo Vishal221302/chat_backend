@@ -15,13 +15,14 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests without origin (like Postman)
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true 
+  credentials: true,
 };
 
 // Other route imports remain the same
