@@ -10,22 +10,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // List of allowed origins (local development and ngrok)
 const allowedOrigins = [
-  'https://chatapp-kohl-tau.vercel.app',
+  "https://chatapp-kohl-tau.vercel.app",
+  "http://localhost:3000", // Allow localhost for testing
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("Incoming Origin:", origin); // Debugging log
     if (!origin || allowedOrigins.includes(origin)) {
-      // Allow requests without origin (like Postman)
       callback(null, true);
     } else {
+      console.log("Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
 };
 
-// Other route imports remain the same
 app.use(cors(corsOptions));
 app.use("/api/auth", authRoutes);
 app.use("/uploads", express.static("uploads"));
