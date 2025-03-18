@@ -4,7 +4,7 @@ let connectedUsers = {};
 function init(server) {
   io = require("socket.io")(server, {
     cors: {
-      origin: "https://chatapp-kohl-tau.vercel.app",
+      origin:"https://chatapp-kohl-tau.vercel.app",
       methods: ["GET", "POST"],
       credentials: true,
     },
