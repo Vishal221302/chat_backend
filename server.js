@@ -2,8 +2,17 @@ const app = require("./src/app");
 const http = require("http");
 const socket = require("./Config/socket"); // Import Socket.IO
 const config = require("./Config/db");
+const cors = require("cors");
+
 
 const server = http.createServer(app);
+const allowedOrigin = process.env.APP_URL || "http://localhost:8000";
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  })
+);
 
 config.connect((err) => {
   if (err) {
@@ -15,8 +24,11 @@ config.connect((err) => {
   socket.init(server);
 
   // Listen on the server port
-  server.listen(process.env.PORT || 8000, () => {
-    console.log("App is running on http://localhost:8000");
+  const PORT = process.env.PORT || 8000;
+  server.listen(PORT, () => {
+    console.log(
+      `App is running on ${process.env.APP_URL || `http://localhost:${PORT}`}`
+    );
   });
 });
 

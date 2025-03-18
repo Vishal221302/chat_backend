@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // List of allowed origins (local development and ngrok)
 const allowedOrigins = [
-  'http://localhost:3000',
+  'https://chat-gamma-beryl.vercel.app',
 ];
 
 const corsOptions = {
