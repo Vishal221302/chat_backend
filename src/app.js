@@ -21,11 +21,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //       callback(new Error('Not allowed by CORS'));
 //     }
 //   },
-//   credentials: true 
+//   credentials: true
 // };
 
 // Other route imports remain the same
 // app.use(cors(corsOptions));
+
+
+// ✅ CORS Configuration
+const allowedOrigins = [
+  "https://chat-gamma-beryl.vercel.app", // Frontend hosted on Vercel
+  "http://localhost:3000" // Allow localhost for development
+];
+
+app.use(cors({
+  origin: allowedOrigins, // Allow only the specified origins
+  credentials: true, // Allow cookies and authentication headers
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"] // Allowed headers
+}));
+
+
 app.use("/api/auth", authRoutes);
 app.use("/uploads", express.static("uploads"));
 // Other routes usage remain the same
