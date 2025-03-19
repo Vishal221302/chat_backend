@@ -4,7 +4,7 @@ let connectedUsers = {};
 function init(server) {
   io = require("socket.io")(server, {
     cors: {
-      origin: "https://chat-gamma-beryl.vercel.app",
+      origin: "https://chat-app-taupe-seven.vercel.app",
       methods: ["GET", "POST"],
       credentials: true,
     },

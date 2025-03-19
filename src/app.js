@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // ✅ CORS Configuration
 const allowedOrigins = [
-  "https://chat-gamma-beryl.vercel.app", // Frontend hosted on Vercel
+  "https://chat-app-taupe-seven.vercel.app", // Frontend hosted on Vercel
   "http://localhost:3000" // Allow localhost for development
 ];
 

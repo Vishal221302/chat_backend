@@ -426,7 +426,7 @@ exports.getUserInfo = (req, res) => {
       }
 
       const user = userResults[0];
-      const profileImageUrl = `https://chatapp-kohl-tau.vercel.app/${user.profile_image}`;
+      const profileImageUrl = `https://chat-backend-s5z0.onrender.com/${user.profile_image}`;
 
       // Send user data back
       res.status(200).json({
